@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('1. Checkout Code') {
             steps {
-                git branch: 'devops', url: 'https://github.com/gurramsaiprakash1999-lang/devops-java-app.git'
+                checkout scm
             }
         }
         stage('2. Maven Build & Package') {
@@ -31,10 +31,10 @@ pipeline {
                     export MINIKUBE_HOME=/home/ubuntu
                     export KUBECONFIG=/var/lib/jenkins/.kube/config
                     
-                    # Load Docker image into Minikube local engine
+                    # Load Docker image into Minikube engine
                     minikube image load java-app:latest
                     
-                    # Apply Manifests & perform rolling update
+                    # Apply Manifests & perform rolling restart
                     kubectl apply -f k8s-deployment.yaml
                     kubectl rollout restart deployment/java-app-deployment
                     kubectl rollout status deployment/java-app-deployment --timeout=60s

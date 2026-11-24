@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('1. Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/gurramsaiprakash1999-lang/devops-java-app.git'
+                git branch: 'devops', url: 'https://github.com/gurramsaiprakash1999-lang/devops-java-app.git'
             }
         }
         stage('2. Maven Build & Package') {

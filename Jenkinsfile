@@ -16,7 +16,8 @@ pipeline {
         }
         stage('3. SonarQube Analysis') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=admin'
+                // Replace sqp_your_generated_token_here with your actual SonarQube token
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_d3439697cb74ea3ab458fb76e0cb64868c5e353f'
             }
         }
         stage('4. Build Docker Image') {
@@ -31,7 +32,7 @@ pipeline {
                     export MINIKUBE_HOME=/home/ubuntu
                     export KUBECONFIG=/var/lib/jenkins/.kube/config
                     
-                    # Load Docker image into Minikube engine
+                    # Load Docker image into Minikube local engine
                     minikube image load java-app:latest
                     
                     # Apply Manifests & perform rolling restart

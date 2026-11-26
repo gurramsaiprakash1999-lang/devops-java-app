@@ -17,7 +17,7 @@ pipeline {
         stage('3. SonarQube Analysis') {
             steps {
                 // Replace sqp_your_generated_token_here with your actual SonarQube token
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_d3439697cb74ea3ab458fb76e0cb64868c5e353f'
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqa_618582310d28e7138f7c602fdbd7cf3e02f1ce41'
             }
         }
         stage('4. Build Docker Image') {
